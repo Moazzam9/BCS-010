@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moazzam Azam | Computer Science Student & Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon" href="android-chrome-512x512.png" sizes="512x512" type="image/png">
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <style>
+   :root {
+  --primary: #3498db;
+  --dark: #2c3e50;
+  --light: #ecf0f1;
+  --accent: #e74c3c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  background-color: var(--dark);
+  color: white;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  animation: slideDown 1s ease forwards;
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  background: linear-gradient(135deg, var(--light) 50%, var(--primary) 50%);
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.95);}
+  100% { opacity: 1; transform: scale(1);}
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeUp 1.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(50px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+.hero-text {
+  flex: 1;
+  padding-right: 50px;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-text h1 span {
+  color: var(--primary);
+}
+
+.hero-text h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.hero-image {
+  flex: 1;
+  text-align: center;
+  animation: zoomIn 2s ease forwards;
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.hero-image img {
+  width:500px;
+  height:500px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.03);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--dark);
+  transform: translateY(-3px);
+}
+
+.social-icons {
+  margin-top: 30px;
+  animation: fadeInIcons 2s ease forwards;
+}
+
+@keyframes fadeInIcons {
+  0% { opacity: 0; transform: translateX(-50px);}
+  100% { opacity: 1; transform: translateX(0);}
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 15px;
+  color: var(--dark);
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary);
+}
+
+/* Sections */
+section {
+  padding: 100px 0;
+  animation: fadeUp 2s ease forwards;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+  color: var(--dark);
+}
+
+.section-title span {
+  color: var(--primary);
+}
+
+/* About Section */
+.about-content, .skills-container, .projects-grid, .contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  animation: fadeUp 2s ease forwards;
+}
+
+.about-text, .about-stats, .skill-category, .project-card, .contact-info, .contact-form {
+  flex: 1 1 45%;
+  animation: fadeUp 2s ease forwards;
+}
+
+.stat-item, .skill-item, .project-card, .timeline-item, .certification-card, .contact-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.stat-item:hover, .skill-item:hover, .project-card:hover, .timeline-item:hover, .certification-card:hover, .contact-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Skills */
+.skill-bar {
+  background: var(--light);
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.skill-level {
+  height: 100%;
+  background: var(--primary);
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 40px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--primary);
+}
+
+.timeline-item {
+  width: 45%;
+  padding: 20px;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 55%;
+}
+
+/* Contact */
+.form-group {
+  margin-bottom: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  position: relative;
+}
+
+#hamburger-icon {
+  font-size: 24px;
+  background-color: var(--dark);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: var(--dark);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width: 200px;
+  z-index: 999;
+  flex-direction: column;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #444;
+  transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--primary);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  nav {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 0 50px;
+    background: linear-gradient(135deg, var(--light) 30%, var(--primary) 30%);
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-text {
+    padding-right: 0;
+  }
+
+  .hero-image {
+    order: -1;
+    margin-bottom: 30px;
+  }
+
+  .hero-image img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    margin-left: 20px;
+    left: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    background: linear-gradient(135deg, var(--light) 20%, var(--primary) 20%);
+    padding-top: 80px;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+    margin-top: 10px;
+  }
+  .hero-text h1 span {
+    color: white;
+  }
+  .hero-text h2 {
+    font-size: 20px;
+  }
+
+  .hero-image img {
+    width:250px;
+    height:250px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-image img {
+    width: 250px;
+    height: 250px;
+  }
+.hero-text h1 span{
+    color: white;
+}
+  .hero-text h1 {
+    font-size: 28px;
+  }
+
+  .hero-text h2 {
+    font-size: 18px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+  }
+
+  header {
+    padding: 15px 0;
+  }
+}
+
+/* Profile Image Specific Enhancements */
+.hero-image img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Smooth transitions for mobile menu */
+.dropdown-content {
+  transition: all 0.3s ease;
+}
+
+/* Prevent image distortion on any device */
+.hero-image {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+  </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Moazzam<span>Azam</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger-menu">
+                    <button id="hamburger-icon">☰</button>
+                    <div id="mobile-dropdown" class="dropdown-content">
+                      <a href="#home">Home</a>
+                      <a href="#about">About</a>
+                      <a href="#skills">Skills</a>
+                      <a href="#projects">Projects</a>
+                      <a href="#education">Education</a>
+                      <a href="#contact">Contact</a>
+                    </div>
+                  </div>
+                  
+                  
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span>Moazzam Azam</span></h1>
+                    <h2>Computer Science Student & Developer</h2>
+                    <p>Bachelor's in Computer Science at COMSATS University Islamabad. Passionate about creating innovative web and mobile solutions.</p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                    <div class="social-icons">
+                        <a href="https://github.com/dashboard"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/moazzam-azam-963778316/"><i class="fab fa-linkedin"></i></a>
+                       
+                        <a href="https://www.instagram.com/itz_moazzam1333?igsh=MTU2ODdqcnk4MGhncA=="><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="profile.webp" alt="Moazzam Azam">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate Computer Science student at COMSATS University Islamabad with expertise in web and mobile application development. My journey in technology began when I wrote my first line of code, and since then I've been constantly learning and building new projects.</p>
+                    <p>When I'm not coding, you can find me contributing to open-source projects, learning new frameworks, or helping fellow developers solve problems. I believe in writing clean, efficient code and creating user-friendly applications.</p>
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <span>Name:</span>
+                            <p>Moazzam Azam</p>
+                        </div>
+                        <div class="info-item">
+                            <span>Email:</span>
+                            <p>moazzam@example.com</p>
+                        </div>
+                        <div class="info-item">
+                            <span>Education:</span>
+                            <p>BSCS - COMSATS University Islamabad</p>
+                        </div>
+                        <div class="info-item">
+                            <span>Interests:</span>
+                            <p>AI, Blockchain, Cloud Computing</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Download CV</a>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-text">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-text">Happy Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-text">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">My <span>Skills</span></h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-item">
+                        <span>HTML/CSS</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>JavaScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>React JS</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>WordPress</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Mobile Development</h3>
+                    <div class="skill-item">
+                        <span>React Native</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-item">
+                        <span>Python</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Java</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>C++</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- New category for Design Tools -->
+                <div class="skill-category">
+                    <h3>Designing Tools</h3>
+                    <div class="skill-item">
+                        <span>Figma</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">My <span>Projects</span></h2>
+            <div class="projects-grid">
+                <!-- WordPress Blog Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="website blog.PNG" alt="Tech and Beyond Blog">
+                        <div class="project-links">
+                            <a href="https://techandbeyond.great-site.net" target="_blank" class="btn-small">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Tech and Beyond Blog</h3>
+                        <p>A fully functional WordPress blog website featuring custom theme development, SEO optimization, and content management system.</p>
+                        <div class="project-tech">
+                            <span>WordPress</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Elementor</span>
+                        </div>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Custom WordPress theme development</li>
+                                <li>Responsive design for all devices</li>
+                                <li>SEO optimized structure</li>
+                                <li>Content management system</li>
+                                <li>Visitor analytics integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Airline Management System -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="airline-system.jpg" alt="Airline Management System">
+                        <div class="project-links">
+                            <a href="erro.html" class="btn-small">View Code</a>
+                            <a href="erro.html" class="btn-small">Demo Video</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Airline Management System (Java)</h3>
+                        <p>A comprehensive airline reservation and management system developed in Java with Swing GUI and MySQL database.</p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Swing</span>
+                            <span>MySQL</span>
+                            <span>JDBC</span>
+                        </div>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Flight booking and reservation system</li>
+                                <li>Passenger management</li>
+                                <li>Ticket generation</li>
+                                <li>Admin dashboard</li>
+                                <li>Database integration</li>
+                                <li>Report generation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+               
+    </section>
+    <section id="education" class="education-section">
+        <div class="container">
+            <h2 class="section-title">My <span>Education</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Science in Computer Science</h3>
+                        <h4>COMSATS University Islamabad</h4>
+                        <p>Currently pursuing my degree with focus on software engineering and web technologies. Key courses include Data Structures, Algorithms, Database Systems, and Artificial Intelligence.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                  
+                    <div class="timeline-content">
+                        <h3>Intermediate in Computer Science</h3>
+                        <h4>Scholar Science College</h4>
+                        <p>Completed my FSc with major subjects in Computer Science, Mathematics, and Physics.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certifications">
+                <h3>Certifications</h3>
+                <div class="certification-grid">
+                    <div class="certification-card">
+                        <h4>Full Stack Web Development</h4>
+                        <p>Coursera - 2024</p>
+                    </div>
+                    <div class="certification-card">
+                        <h4>React Native Mobile Development</h4>
+                        <p>Udemy - 2023</p>
+                    </div>
+                    <div class="certification-card">
+                        <h4>Python for Data Science</h4>
+                        <p>edX - 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>moazzamkk13@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h4>Phone</h4>
+                        <p>03156474235</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Location</h4>
+                        <p>New City Phase 2 WahCantt</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                  <div class="form-group">
+                      <input type="text" id="name" placeholder="Your Name" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="email" id="email" placeholder="Your Email" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" id="subject" placeholder="Subject">
+                  </div>
+                  <div class="form-group">
+                      <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                  </div>
+                  <button type="submit" class="btn">Send Message</button>
+              </form>
+              
+            </div>
+        </div>
+    </section>
+    <script>
+        
+        const hamburgerIcon = document.getElementById("hamburger-icon");
+  const dropdown = document.getElementById("mobile-dropdown");
+
+  hamburgerIcon.addEventListener("click", () => {
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  // Optional: Close menu after clicking a link
+  dropdown.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      dropdown.style.display = "none";
+    });
+  });
+
+
+    // Initialize EmailJS with your public key
+emailjs.init("TplVHZl1Vn3zyNo_r");  // Replace with your actual public key
+
+// Handle form submission
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();  // Prevent the default form submission
+
+    // Get form values using their IDs
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+
+    // Log form data to console (for debugging purposes)
+    console.log("Form Data:", { name, email, subject, message });
+
+    // Prepare template parameters to send to EmailJS
+    const templateParams = {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message
+    };
+
+    // Send the email using EmailJS service
+    emailjs.send("service_ewer1dk", "template_bmp54kd", templateParams)  // Replace with your actual service and template IDs
+        .then(function(response) {
+            console.log("Success:", response);  // Log success response to console
+            alert("Message sent successfully!");
+            
+            // Reset the form after successful submission
+            document.getElementById("contact-form").reset();
+        }, function(error) {
+            console.error("Failed to send message:", error);  // Log error response to console
+            alert("Failed to send message. Please try again.");
+        });
+});
+
+
+    </script>
+    
+</body>
+</html>
+
+    
