@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'echo "Building application..."'
+                // Add your build commands here
+                // Example for Node.js: sh 'npm install'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying to Azure VM..."'
+                // Example deployment for web app:
+                sh 'sudo cp -r * /var/www/html/'
+            }
+        }
+    }
+}
